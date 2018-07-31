@@ -1,168 +1,56 @@
 # AWS-Region-Ping
-Performs repeated TCP handshakes with the EC2 API endpoints (enumerated via ec2:DescribeRegions) in the various regions, and returns statistics on the RTTs
+
+Performs repeated TCP handshakes with the EC2 API endpoints (enumerated via ec2:DescribeRegions) in the various regions, and returns statistics on the RTTs.
+
+The RTT is derived from the three-way handshake pair (open, and close) by dividing the handshake time in two. In practice, it is two round trips to complete the socket open and graceful close.
 
 ## Example Output
 
 ```json
-$ python3 aws_region_ping.py --pings-per-region 100 
+$ python3 aws_region_ping.py --pings-per-region 250
 {
-  "ap-northeast-1": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.3806877136230469,
-    "mean": 0.16924039363861085,
-    "median": 0.16727900505065918,
-    "min": 0.15760374069213867,
-    "stdev": 0.0217357284982913
-  },
-  "ap-northeast-2": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.4066765308380127,
-    "mean": 0.20573566198349,
-    "median": 0.20309388637542725,
-    "min": 0.1967637538909912,
-    "stdev": 0.02083890272614339
-  },
-  "ap-south-1": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.5899395942687988,
-    "mean": 0.29081905841827393,
-    "median": 0.2877180576324463,
-    "min": 0.2738325595855713,
-    "stdev": 0.030905519965844536
-  },
-  "ap-southeast-1": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.5740706920623779,
-    "mean": 0.2671313142776489,
-    "median": 0.26699817180633545,
-    "min": 0.24448060989379883,
-    "stdev": 0.03214212749420548
-  },
-  "ap-southeast-2": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.5942666530609131,
-    "mean": 0.27969746589660643,
-    "median": 0.2844829559326172,
-    "min": 0.2529141902923584,
-    "stdev": 0.03587281230611303
-  },
-  "ca-central-1": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.06606268882751465,
-    "mean": 0.036138136386871335,
-    "median": 0.03566110134124756,
-    "min": 0.031694889068603516,
-    "stdev": 0.0038480654962178874
-  },
-  "eu-central-1": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.2552483081817627,
-    "mean": 0.1296386480331421,
-    "median": 0.1265547275543213,
-    "min": 0.12212157249450684,
-    "stdev": 0.01369221452925003
-  },
-  "eu-west-1": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.25086450576782227,
-    "mean": 0.13854958057403566,
-    "median": 0.13752543926239014,
-    "min": 0.13108491897583008,
-    "stdev": 0.01185431560554811
-  },
-  "eu-west-2": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.24988985061645508,
-    "mean": 0.1276974844932556,
-    "median": 0.12647008895874023,
-    "min": 0.12337064743041992,
-    "stdev": 0.012432349412483178
-  },
-  "eu-west-3": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.2461531162261963,
-    "mean": 0.12661243677139283,
-    "median": 0.12286722660064697,
-    "min": 0.11709237098693848,
-    "stdev": 0.013425125402574511
-  },
-  "sa-east-1": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.38019704818725586,
-    "mean": 0.18061148405075073,
-    "median": 0.17778503894805908,
-    "min": 0.17057228088378906,
-    "stdev": 0.02050826849434674
-  },
-  "us-east-1": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.061858177185058594,
-    "mean": 0.05707309246063232,
-    "median": 0.05705225467681885,
-    "min": 0.053122758865356445,
-    "stdev": 0.0020398767125641044
-  },
-  "us-east-2": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.09993219375610352,
-    "mean": 0.049333364963531495,
-    "median": 0.04911231994628906,
-    "min": 0.04419374465942383,
-    "stdev": 0.005833907751953878
-  },
-  "us-west-1": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.14373326301574707,
-    "mean": 0.09376447439193726,
-    "median": 0.09337735176086426,
-    "min": 0.08737969398498535,
-    "stdev": 0.00582410789922173
-  },
-  "us-west-2": {
-    "count": 100,
-    "errors": 0,
-    "max": 0.12185287475585938,
-    "mean": 0.06928484439849854,
-    "median": 0.06901395320892334,
-    "min": 0.06312108039855957,
-    "stdev": 0.006007784238735252
-  }
+  ...
+    "ca-central-1": {
+        "count": 250,
+        "errors": 0,
+        "max": 0.03694558143615723,
+        "mean": 0.01730522918701172,
+        "median": 0.017184555530548096,
+        "min": 0.01574873924255371,
+        "stdev": 0.001495932409499759
+    },
+    "eu-central-1": {
+        "count": 250,
+        "errors": 0,
+        "max": 0.13738274574279785,
+        "mean": 0.0649686689376831,
+        "median": 0.0638437271118164,
+        "min": 0.060950517654418945,
+        "stdev": 0.005276259454930074
+    },
+  ...
 }
 ```
 
-`jq` is handy for massaging this into something you might care more about:
+`jq` is handy for massaging this into something you might care more about, the average milliseconds for a one-way round trip (assuming path)
 
 ```json
-$ python3 aws_region_ping.py --pings-per-region 100 | jq '. | map_values(.mean)'
+$ python3 aws_region_ping.py --pings-per-region 100 | jq '. | map_values(10000*.mean | floor | ./10)'
 {
-  "ap-northeast-1": 0.16924039363861085,
-  "ap-northeast-2": 0.20573566198349,
-  "ap-south-1": 0.29081905841827393,
-  "ap-southeast-1": 0.2671313142776489,
-  "ap-southeast-2": 0.27969746589660643,
-  "ca-central-1": 0.036138136386871335,
-  "eu-central-1": 0.1296386480331421,
-  "eu-west-1": 0.13854958057403566,
-  "eu-west-2": 0.1276974844932556,
-  "eu-west-3": 0.12661243677139283,
-  "sa-east-1": 0.18061148405075073,
-  "us-east-1": 0.05707309246063232,
-  "us-east-2": 0.049333364963531495,
-  "us-west-1": 0.09376447439193726,
-  "us-west-2": 0.06928484439849854
+  "ap-northeast-1": 42.9,
+  "ap-northeast-2": 51.25,
+  "ap-south-1": 73.6,
+  "ap-southeast-1": 65.25,
+  "ap-southeast-2": 70.45,
+  "ca-central-1": 8.65,
+  "eu-central-1": 32.45,
+  "eu-west-1": 34.45,
+  "eu-west-2": 31.85,
+  "eu-west-3": 31.15,
+  "sa-east-1": 44.9,
+  "us-east-1": 14.5,
+  "us-east-2": 12.25,
+  "us-west-1": 21.35,
+  "us-west-2": 17.1
 }
 ```
