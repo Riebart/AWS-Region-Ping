@@ -153,7 +153,7 @@ def __main(pings_per_region, verbose):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--pings-per-region",
+        "--pings-per-region", "-n",
         type=int,
         required=True,
         help="""Number of times to complete a TCP handshake with the region""")
