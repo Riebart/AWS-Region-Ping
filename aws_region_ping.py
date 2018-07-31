@@ -56,7 +56,7 @@ def ping_region(region, region_name, ping_count, verbose):
 
 
 def __summarize_region_results(results):
-    successes = [r[0] / 2 for r in results if r[-1] is None]
+    successes = [r[0] for r in results if r[-1] is None]
     return {
         "count": len(results),
         "errors": len(results) - len(successes),

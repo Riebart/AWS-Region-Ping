@@ -2,8 +2,6 @@
 
 Performs repeated TCP handshakes with the EC2 API endpoints (enumerated via ec2:DescribeRegions) in the various regions, and returns statistics on the RTTs.
 
-The RTT is derived from the three-way handshake pair (open, and close) by dividing the handshake time in two. In practice, it is two round trips to complete the socket open and graceful close.
-
 ## Example Output
 
 ```json
