@@ -11,20 +11,20 @@ $ python3 aws_region_ping.py --pings-per-region 250
     "ca-central-1": {
         "count": 250,
         "errors": 0,
-        "max": 0.03694558143615723,
-        "mean": 0.01730522918701172,
-        "median": 0.017184555530548096,
-        "min": 0.01574873924255371,
-        "stdev": 0.001495932409499759
+        "max": 0.0732574462890625,
+        "mean": 0.035907711029052734,
+        "median": 0.03600454330444336,
+        "min": 0.03160262107849121,
+        "stdev": 0.0035189862267197072
     },
     "eu-central-1": {
         "count": 250,
         "errors": 0,
-        "max": 0.13738274574279785,
-        "mean": 0.0649686689376831,
-        "median": 0.0638437271118164,
-        "min": 0.060950517654418945,
-        "stdev": 0.005276259454930074
+        "max": 0.2570481300354004,
+        "mean": 0.13174918460845947,
+        "median": 0.1292515993118286,
+        "min": 0.12469148635864258,
+        "stdev": 0.009426455151220692
     },
   ...
 }
@@ -35,20 +35,20 @@ $ python3 aws_region_ping.py --pings-per-region 250
 ```json
 $ python3 aws_region_ping.py --pings-per-region 100 | jq '. | map_values(10000*.mean | floor | ./10)'
 {
-  "ap-northeast-1": 42.9,
-  "ap-northeast-2": 51.25,
-  "ap-south-1": 73.6,
-  "ap-southeast-1": 65.25,
-  "ap-southeast-2": 70.45,
-  "ca-central-1": 8.65,
-  "eu-central-1": 32.45,
-  "eu-west-1": 34.45,
-  "eu-west-2": 31.85,
-  "eu-west-3": 31.15,
-  "sa-east-1": 44.9,
-  "us-east-1": 14.5,
-  "us-east-2": 12.25,
-  "us-west-1": 21.35,
-  "us-west-2": 17.1
+  "ap-northeast-1": 87.5,
+  "ap-northeast-2": 102.5,
+  "ap-south-1": 146,
+  "ap-southeast-1": 131.9,
+  "ap-southeast-2": 142.1,
+  "ca-central-1": 17.95,
+  "eu-central-1": 65.85,
+  "eu-west-1": 69.1,
+  "eu-west-2": 63.75,
+  "eu-west-3": 61.7,
+  "sa-east-1": 92.5,
+  "us-east-1": 29.05,
+  "us-east-2": 24.25,
+  "us-west-1": 46.6,
+  "us-west-2": 33.3
 }
 ```

@@ -14,8 +14,6 @@ import argparse
 import threading
 import statistics
 
-import boto3
-
 global region_results
 region_results = dict()
 
@@ -69,8 +67,9 @@ def __summarize_region_results(results):
 
 
 def __main(pings_per_region, verbose):
-    ec2 = boto3.client("ec2")
     try:
+        import boto3
+        ec2 = boto3.client("ec2")
         regions = ec2.describe_regions()
     except:
         if verbose:
