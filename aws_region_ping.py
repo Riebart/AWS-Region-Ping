@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test the TCP RTT to each AWS region by connecting to the HTTP port for the DynamoDB endpoint
+Test the TCP RTT to each AWS region by connecting to the HTTP port for the EC2 API endpoint
 for EC2 in each region.
 """
 
